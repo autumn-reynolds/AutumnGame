@@ -1,0 +1,81 @@
+[gd_scene load_steps=7 format=3 uid="uid://bjby0a0fak4dc"]
+
+[ext_resource type="Script" path="res://movementScript.gd" id="1_3pdu5"]
+[ext_resource type="Script" path="res://collision_shape_2d.gd" id="2_0ud3l"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_itei4"]
+friction = 0.11
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rdifu"]
+size = Vector2(573.5, 27)
+
+[sub_resource type="QuadMesh" id="QuadMesh_lr1qj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a3o8n"]
+size = Vector2(36.375, 29)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Ground" type="RigidBody2D" parent="."]
+position = Vector2(-23, 123)
+physics_material_override = SubResource("PhysicsMaterial_itei4")
+lock_rotation = true
+freeze = true
+
+[node name="Hitbox" type="CollisionShape2D" parent="Ground"]
+position = Vector2(515.25, 96)
+shape = SubResource("RectangleShape2D_rdifu")
+
+[node name="Shape_Texture" type="MeshInstance2D" parent="Ground"]
+position = Vector2(514.75, 96)
+scale = Vector2(572.5, 27)
+mesh = SubResource("QuadMesh_lr1qj")
+
+[node name="Ground2" type="RigidBody2D" parent="."]
+position = Vector2(858, 122)
+scale = Vector2(0.0799988, 1)
+physics_material_override = SubResource("PhysicsMaterial_itei4")
+lock_rotation = true
+freeze = true
+
+[node name="Hitbox" type="CollisionShape2D" parent="Ground2"]
+position = Vector2(515.25, 96)
+shape = SubResource("RectangleShape2D_rdifu")
+
+[node name="Shape_Texture" type="MeshInstance2D" parent="Ground2"]
+position = Vector2(514.75, 96)
+scale = Vector2(572.5, 27)
+mesh = SubResource("QuadMesh_lr1qj")
+
+[node name="Ground3" type="RigidBody2D" parent="."]
+position = Vector2(1017, 122)
+scale = Vector2(0.0799988, 1)
+physics_material_override = SubResource("PhysicsMaterial_itei4")
+lock_rotation = true
+freeze = true
+
+[node name="Hitbox" type="CollisionShape2D" parent="Ground3"]
+position = Vector2(515.25, 96)
+shape = SubResource("RectangleShape2D_rdifu")
+
+[node name="Shape_Texture" type="MeshInstance2D" parent="Ground3"]
+position = Vector2(514.75, 96)
+scale = Vector2(572.5, 27)
+mesh = SubResource("QuadMesh_lr1qj")
+
+[node name="Player" type="RigidBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_itei4")
+script = ExtResource("1_3pdu5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(221.813, 62.5)
+shape = SubResource("RectangleShape2D_a3o8n")
+script = ExtResource("2_0ud3l")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Player"]
+position = Vector2(221.5, 62.5)
+scale = Vector2(35, 27)
+mesh = SubResource("QuadMesh_lr1qj")
+
+[node name="GameCamera" type="Camera2D" parent="."]
+position = Vector2(576, 324)
